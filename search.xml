@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>MYSQL结构框架-一条SQL查询语句是如何执行的</title>
+      <link href="2021/03/01/mysql-jie-gou-kuang-jia-yi-tiao-sql-cha-xun-yu-ju-shi-ru-he-zhi-xing-de/"/>
+      <url>2021/03/01/mysql-jie-gou-kuang-jia-yi-tiao-sql-cha-xun-yu-ju-shi-ru-he-zhi-xing-de/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一条SQL查询语句是如何执行的"><a href="#一条SQL查询语句是如何执行的" class="headerlink" title="一条SQL查询语句是如何执行的"></a>一条SQL查询语句是如何执行的</h1><p><img src="/images/mysql_01.png" alt="MYSQL结构框架"></p><p>MySQL可以分为server层和存储引擎层两部分</p><ul><li>server层包括连接器、查询缓存、分析器、优化器、执行器、MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。</li><li>存储引擎层负责数据的存储和提取。其架构模式是插件式的，支持InnoDB、MyISAM、Memory等多个存储引擎。现在最常用的存储引擎是InnoDB，它从MySQL 5.5.5版本开始成为了默认存储引擎。</li><li>不同的存储引擎公用i一个server层</li></ul><h2 id="连接器"><a href="#连接器" class="headerlink" title="连接器"></a>连接器</h2><ul><li><p>连接器负责跟客户端建立连接、获取权限、维持和管理连接。连接完成后，如果你没有后续的动作，这个连接就处于空闲状态。</p></li><li><p>你可以在show processlist命令中看到它。客户端如果太长时间没动静，连接器就会自动将它断开。</p></li><li><p>长连接是指连接成功后，如果客户端持续有请求，则一直使用同一个连接。短连接则是指每次执行完很少的几次查询就断开连接，下次查询再重新建立一个。</p><h2 id="查询缓存"><a href="#查询缓存" class="headerlink" title="查询缓存"></a>查询缓存</h2></li><li><p>MySQL拿到一个查询请求后，会先到查询缓存看看，之前是不是执行过这条语句。之前执行过的语句及其结果可能会以key-value对的形式，被直接缓存在内存中。如果你的查询能够直接在这个缓存中找到key，那么这个value就会被直接返回给客户端。</p></li><li><p>不在查询缓存中，就会继续后面的执行阶段。执行完成后，执行结果会被存入查询缓存中。</p></li><li><p>不建议开启查询缓存，查询缓存的失效非常频繁，只要有对一个表的更新，这个表上所有的查询缓存都会被清空。</p><h2 id="分析器"><a href="#分析器" class="headerlink" title="分析器"></a>分析器</h2></li><li><p>分析器先会做“词法分析”,词法分析完后就要做“语法分析”。根据词法分析的结果，语法分析器会根据语法规则，判断你输入的这个SQL语句是否满足MySQL语法。如果你的语句不对，就会收到“You have an error in your SQL syntax”的错误提醒</p><h2 id="优化器"><a href="#优化器" class="headerlink" title="优化器"></a>优化器</h2></li><li><p>优化器是在表里面有多个索引的时候，决定使用哪个索引；或者在一个语句有多表关联（join）的时候，决定各个表的连接顺序。</p><h2 id="执行器"><a href="#执行器" class="headerlink" title="执行器"></a>执行器</h2></li><li><p>开始执行的时候，要先判断一下你对这个表T有没有执行查询的权限，如果没有，就会返回没有权限的错误</p></li><li><p>如果有权限，就打开表继续执行。打开表的时候，执行器就会根据表的引擎定义，去使用这个引擎提供的接口</p></li></ul><p>一条查询语句的执行过程一般是经过连接器、分析器、优化器、执行器等功能模块，最后到达存储引擎。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>article title</title>
+      <link href="2021/02/28/article-title/"/>
+      <url>2021/02/28/article-title/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="2021/02/28/hello-world/"/>
+      <url>2021/02/28/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
