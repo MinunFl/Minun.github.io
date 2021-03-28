@@ -36,6 +36,12 @@
         <content type="html"><![CDATA[<h1 id="美团一面"><a href="#美团一面" class="headerlink" title="美团一面"></a>美团一面</h1><ul><li>自我介绍</li><li>tcp为什么是三次握手</li><li>说说你的项目</li><li>知道kafka，说一下 （一点</li><li>kafka不会不丢失消息</li><li>学过那些语言，只要用什么</li><li>java hashmap说一下 ）不懂</li><li>java python c++你觉得区别是什么，各自优缺点</li><li>为什么java可以可以移植性好</li><li>那c呢？（不知道</li><li>进程与线程区别</li><li>数据库索引是什么数据结构</li><li>为什么是b+树，和b树优势</li><li>你的项目该怎么建索引</li><li>你项目数据库是怎么存的</li><li>数据库的隔离级别，介绍一下</li><li>为什么有可重复读还要有串行化，区别</li><li>幻读是什么</li><li>最近读什么书</li><li>读书收获</li><li>c++线程加锁，mutex，源码怎么实现</li><li>一个先增后减的数组，找最大值</li><li>一个乱序数组，保证每个数都出现2次，拿走一个，求拿走的数</li><li>拿走2个，保证拿走不同的数</li><li>回问<ul><li>算法题表现如何（一般，没有想象中高效</li><li>拿两个怎么做（三次异或</li></ul></li></ul>]]></content>
       
       
+      <categories>
+          
+          <category> 春招 </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -55,6 +61,12 @@
         <content type="html"><![CDATA[<h1 id="wxg一面"><a href="#wxg一面" class="headerlink" title="wxg一面"></a>wxg一面</h1><ul><li>三次握手<ul><li>过程</li><li>syn是什么</li><li>seq怎么取值 为什么？</li></ul></li><li>写过socket编程吗？</li><li>学过数据库和os？</li><li>进程和线程一些</li><li>进程有哪些资源？</li><li>谷歌不同页面是进程线程？为什么</li><li>主从备份知道吗？</li><li>map order_map 区别</li><li>哈希冲突解决</li><li>拉链发要存什么信息？</li><li>了解携程吗？</li></ul><p>凉凉</p>]]></content>
       
       
+      <categories>
+          
+          <category> 春招 </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -71,8 +83,14 @@
       <link href="2021/03/24/zi-jie-liang-mian/"/>
       <url>2021/03/24/zi-jie-liang-mian/</url>
       
-        <content type="html"><![CDATA[<p>#字节一面</p><ul><li>算法题：在一个连续区间使得其值等于target，使得区间长度最大（一开始给的转变的其他题意，写了3个方案）</li><li>介绍一下虚拟内存</li><li>页面置换实现？</li><li>sql题（不会）<ul><li>给一个表，每个人有成绩和科目</li><li>查询出每个人最高成绩的科目<br>打了不会就结束了…..直接开始下一家</li></ul></li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="字节一面"><a href="#字节一面" class="headerlink" title="字节一面"></a>字节一面</h1><ul><li>算法题：在一个连续区间使得其值等于target，使得区间长度最大（一开始给的转变的其他题意，写了3个方案）</li><li>介绍一下虚拟内存</li><li>页面置换实现？</li><li>sql题（不会）<ul><li>给一个表，每个人有成绩和科目</li><li>查询出每个人最高成绩的科目<br>打了不会就结束了…..直接开始下一家</li></ul></li></ul>]]></content>
       
+      
+      <categories>
+          
+          <category> 春招 </category>
+          
+      </categories>
       
       
         <tags>
@@ -93,10 +111,166 @@
         <content type="html"><![CDATA[<h1 id="一条SQL查询语句是如何执行的"><a href="#一条SQL查询语句是如何执行的" class="headerlink" title="一条SQL查询语句是如何执行的"></a>一条SQL查询语句是如何执行的</h1><p><img src="/images/mysql_01.png" alt="MYSQL结构框架"></p><p>MySQL可以分为server层和存储引擎层两部分</p><ul><li>server层包括连接器、查询缓存、分析器、优化器、执行器、MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。</li><li>存储引擎层负责数据的存储和提取。其架构模式是插件式的，支持InnoDB、MyISAM、Memory等多个存储引擎。现在最常用的存储引擎是InnoDB，它从MySQL 5.5.5版本开始成为了默认存储引擎。</li><li>不同的存储引擎公用i一个server层</li></ul><h2 id="连接器"><a href="#连接器" class="headerlink" title="连接器"></a>连接器</h2><ul><li><p>连接器负责跟客户端建立连接、获取权限、维持和管理连接。连接完成后，如果你没有后续的动作，这个连接就处于空闲状态。</p></li><li><p>你可以在show processlist命令中看到它。客户端如果太长时间没动静，连接器就会自动将它断开。</p></li><li><p>长连接是指连接成功后，如果客户端持续有请求，则一直使用同一个连接。短连接则是指每次执行完很少的几次查询就断开连接，下次查询再重新建立一个。</p><h2 id="查询缓存"><a href="#查询缓存" class="headerlink" title="查询缓存"></a>查询缓存</h2></li><li><p>MySQL拿到一个查询请求后，会先到查询缓存看看，之前是不是执行过这条语句。之前执行过的语句及其结果可能会以key-value对的形式，被直接缓存在内存中。如果你的查询能够直接在这个缓存中找到key，那么这个value就会被直接返回给客户端。</p></li><li><p>不在查询缓存中，就会继续后面的执行阶段。执行完成后，执行结果会被存入查询缓存中。</p></li><li><p>不建议开启查询缓存，查询缓存的失效非常频繁，只要有对一个表的更新，这个表上所有的查询缓存都会被清空。</p><h2 id="分析器"><a href="#分析器" class="headerlink" title="分析器"></a>分析器</h2></li><li><p>分析器先会做“词法分析”,词法分析完后就要做“语法分析”。根据词法分析的结果，语法分析器会根据语法规则，判断你输入的这个SQL语句是否满足MySQL语法。如果你的语句不对，就会收到“You have an error in your SQL syntax”的错误提醒</p><h2 id="优化器"><a href="#优化器" class="headerlink" title="优化器"></a>优化器</h2></li><li><p>优化器是在表里面有多个索引的时候，决定使用哪个索引；或者在一个语句有多表关联（join）的时候，决定各个表的连接顺序。</p><h2 id="执行器"><a href="#执行器" class="headerlink" title="执行器"></a>执行器</h2></li><li><p>开始执行的时候，要先判断一下你对这个表T有没有执行查询的权限，如果没有，就会返回没有权限的错误</p></li><li><p>如果有权限，就打开表继续执行。打开表的时候，执行器就会根据表的引擎定义，去使用这个引擎提供的接口</p></li></ul><p>一条查询语句的执行过程一般是经过连接器、分析器、优化器、执行器等功能模块，最后到达存储引擎。</p>]]></content>
       
       
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
       
         <tags>
             
             <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>sql语句</title>
+      <link href="2021/03/01/sql-yu-ju/"/>
+      <url>2021/03/01/sql-yu-ju/</url>
+      
+        <content type="html"><![CDATA[<p><code>limit a offset b</code></p><ul><li><p>返回a行从第b行开始</p><p><code>join on</code></p></li><li><p>INNER JOIN（内连接,或等值连接）：获取两个表中字段匹配关系的记录。</p></li><li><p>LEFT JOIN（左连接）：获取左表所有记录，即使右表没有对应匹配的记录。</p></li><li><p>RIGHT JOIN（右连接）： 与 LEFT JOIN 相反，用于获取右表所有记录，即使左表没有对应匹配的记录。<br><img src="%5Cimages%5Csql_01.png" alt="inner join"><img src="%5Cimages%5Csql_02.png" alt="inner join"><img src="%5Cimages%5Csql_03.png" alt="inner join"></p></li></ul><p><code>group having</code></p><ul><li><p>使用HAVING子句来指定一组行或聚合的过滤条件。</p><p><code>is not null</code> <code>is null</code></p></li><li><p>判断字段为null，非null，不可以用 =，!= 直接判断。</p></li><li><p>pronlem 183</p><pre class="line-numbers language-none"><code class="language-none">select    C.Name as Customers  from(    select     A.Name,B.CustomerId    from         Customers as A left join Orders as B    on         A.Id&#x3D;B.CustomerId)   as Cwhere    C.CustomerId is null<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><p><code>not in</code></p><ul><li>不在表中的数据</li><li>problem 183<pre class="line-numbers language-none"><code class="language-none">select     Name as Customersfrom     Customerswhere     Id not in (select distinct CustomerId from Orders)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><p><code>case when then else end;</code></p><ul><li><p>类比case end结束</p></li><li><p>problem 627</p><pre class="line-numbers language-none"><code class="language-none">update    salaryset     sex &#x3D;   case                 sex            when                &#39;m&#39;                then                    &#39;f&#39;           when                &#39;f&#39;                then                    &#39;m&#39;            end;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><p><code>DATEDIFF(a, b)</code></p><ul><li><p>返回两个日期的插值的天数 $a - b$</p></li><li><p>DATEDIFF(date1,date2)</p></li><li><p>problem 197</p><pre class="line-numbers language-none"><code class="language-none">select     A.idfrom    Weather as A, Weather as Bwhere    datediff(A.recordDate ,B.recordDate) &#x3D; 1 and A.Temperature  &gt; B.Temperature <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><code>CONCAT</code></p></li><li><p>CONCAT()函数需要一个或多个字符串参数，并将它们连接成一个字符串。CONCAT()函数需要至少一个参数，否则会引起错误。</p></li><li><p>CONCAT()函数在连接之前将所有参数转换为字符串类型。如果任何参数为NULL，则CONCAT()函数返回NULL值。</p></li></ul><p><code>CONCAT_WS</code></p><ul><li>CONCAT_WS()函数将两个或多个字符串值与预定义的分隔符相连接。</li><li>CONCAT_WS(seperator,string1,string2, … );</li></ul><p><code>TRIM()</code></p><ul><li>去除首尾空格</li></ul><p><code>IFNULL</code></p><ul><li><p>IFNULL(a,b) 如果a不为null，返回a的值，否则返回b</p></li><li><p>IFNULL()的返回值是数字或是字符串，具体情况取决于其所使用的语境。</p></li><li><p>AVG()    返回某列的平均值</p></li><li><p>COUNT()    返回某列的行数</p></li><li><p>MAX()    返回某列的最大值</p></li><li><p>MIN()    返回某列的最小值</p></li><li><p>SUM()    返回某列值之和</p></li><li><p>DISTINCT 汇总不同的值<br>字符串</p></li><li><p>LEFT()    左边的字符</p></li><li><p>RIGHT()    右边的字符</p></li><li><p>LOWER()    转换为小写字符</p></li><li><p>UPPER()    转换为大写字符</p></li><li><p>LTRIM()    去除左边的空格</p></li><li><p>RTRIM()    去除右边的空格</p></li><li><p>LENGTH()    长度<br>日期</p></li><li><p>ADDDATE()    增加一个日期（天、周等）</p></li><li><p>ADDTIME()    增加一个时间（时、分等）</p></li><li><p>CURDATE()    返回当前日期</p></li><li><p>CURTIME()    返回当前时间</p></li><li><p>DATE()    返回日期时间的日期部分</p></li><li><p>DATEDIFF()    计算两个日期之差</p></li><li><p>DATE_ADD()    高度灵活的日期运算函数</p></li><li><p>DATE_FORMAT()    返回一个格式化的日期或时间串</p></li><li><p>DAY()    返回一个日期的天数部分</p></li><li><p>DAYOFWEEK()    对于一个日期，返回对应的星期几</p></li><li><p>HOUR()    返回一个时间的小时部分</p></li><li><p>MINUTE()    返回一个时间的分钟部分</p></li><li><p>MONTH()    返回一个日期的月份部分</p></li><li><p>NOW()    返回当前日期和时间</p></li><li><p>SECOND()    返回一个时间的秒部分</p></li><li><p>TIME()    返回一个日期时间的时间部分</p></li><li><p>YEAR()    返回一个日期的年份部分</p></li></ul><p><strong>窗口函数</strong> mysql 8.0引入</p><ul><li>RANK()</li><li>problem 178<pre class="line-numbers language-none"><code class="language-none">select *,   rank() over (order by 成绩 desc) as ranking,   dense_rank() over (order by 成绩 desc) as dese_rank,   row_number() over (order by 成绩 desc) as row_numfrom 班级<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><p>select e1.Name as ‘Employee’, e1.Salary<br>from Employee e1<br>where 3 &gt;<br>(<br>    select count(distinct e2.Salary)<br>    from Employee e2<br>    where e2.Salary &gt; e1.Salary<br>)<br>;</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>全局锁和表锁—死锁策略</title>
+      <link href="2021/03/01/quan-ju-suo-he-biao-suo/"/>
+      <url>2021/03/01/quan-ju-suo-he-biao-suo/</url>
+      
+        <content type="html"><![CDATA[<h1 id="全局锁和表锁"><a href="#全局锁和表锁" class="headerlink" title="全局锁和表锁"></a>全局锁和表锁</h1><ul><li>根据加锁的范围，MySQL里面的锁大致可以分成全局锁、表级锁和行锁三类</li></ul><h2 id="全局锁"><a href="#全局锁" class="headerlink" title="全局锁"></a>全局锁</h2><ul><li>MySQL提供加全局读锁的方法：<code>Flush tables with read lock(FTWRL)</code>，释放<code>unlock tables</code>这个命令可以使整个库处于只读状态，客户端断开后，MySQL会自动释放。数据更新语句、数据定义语句和更新类事务的提交语句等操作都会被阻塞。使用场景：全库逻辑备份。</li><li>风险：<ul><li>主库备份，在备份期间不能更新，业务停摆。</li><li>从库备份，备份期间不能执行主库同步的binlog，导致主从延迟。</li><li>官方自带的逻辑备份工具 mysqldump，当 mysqldump 使用参数 –single-transaction 的时候，会启动一个事务，确保拿到一致性视图。而由于MVCC的支持，这个过程中数据是可以正常更新的。</li></ul></li><li>如果要全库只读，为什么不使用 set global readonly=true 的方式？在有些系统中，readonly 的值会被用来做其他逻辑，比如判断主备库。所以修改 global 变量的方式影响太大。</li></ul><h2 id="表级锁"><a href="#表级锁" class="headerlink" title="表级锁"></a>表级锁</h2><ul><li>MySQL 里面表级锁有两种，一种是表锁，一种是元数据所(meta data lock,MDL)。</li><li>添加表锁：<code>lock tables tableName read/write</code></li><li>也可以用unlock tables主动释放锁，也可以在客户端断开的时候自动释放。lock tables语法除了会限制别的线程的读写外，也限定了本线程接下来的操作对象。</li><li>InnoDB等支持行锁的引擎，不建议使用 lock tables 命令来控制并发，锁表代价影响过大。</li><li>另一类表级的锁是MDL（metadata lock)。MDL不需要显式使用，在访问一个表的时候会被自动加上。MDL的作用是，保证读写的正确性。当对一个表做增删改查操作的时候，加MDL读锁；当要对表做结构变更操作的时候，加MDL写锁。读锁之间不互斥，因此你可以有多个线程同时对一张表增删改查。读写锁之间、写锁之间是互斥的，用来保证变更表结构操作的安全性。因此，如果有两个线程要同时给一个表加字段，其中一个要等另一个执行完才能开始执行。</li><li>MDL 会直到事务提交才会释放，在做表结构变更的时候，一定要小心不要导致锁住线上查询和更新。<blockquote><p><strong>如何安全地给表加字段</strong><br>给一个表加字段，或者修改字段，或者加索引，需要扫描全表的数据。首先我们要解决长事务，事务不提交，就会一直占着MDL锁。在MySQL的information_schema 库的 innodb_trx 表中，你可以查到当前执行中的事务。如果你要做DDL变更的表刚好有长事务在执行，要考虑先暂停DDL，或者kill掉这个长事务。<br>如果你要变更的表是一个热点表，虽然数据量不大，但是上面的请求很频繁，这时候kill可能未必管用，因为新的请求马上就来了。比较理想的机制是，在alter table语句里面设定等待时间，如果在这个指定的等待时间里面能够拿到MDL写锁最好，拿不到也不要阻塞后面的业务语句，先放弃。之后开发人员或者DBA再通过重试命令重复这个过程</p></blockquote></li></ul><h2 id="行锁"><a href="#行锁" class="headerlink" title="行锁"></a>行锁</h2><ul><li>MySQL的行锁是在引擎层由各个引擎自己实现的</li><li>MyISAM引擎就不支持行锁。不支持行锁意味着并发控制只能使用表锁，同一张表上任何时刻只能有一个更新在执行，这就会影响到业务并发度。</li><li><strong>两阶段锁协议</strong>：在InnoDB事务中，行锁是在需要的时候才加上的，但并不是不需要了就立刻释放，而是要等到事务结束时才释放。如果你的事务中需要锁多个行，要把最可能造成锁冲突、最可能影响并发度的锁尽量往后放。</li></ul><h2 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h2><ul><li>当并发系统中不同线程出现循环资源依赖，涉及的线程都在等待别的线程释放资源时，就会导致这几个线程都进入无限等待的状态，称为死锁。</li></ul><p><strong>解锁死锁策略</strong></p><ul><li>一种策略是，直接进入等待，直到超时。这个超时时间可以通过参数innodb_lock_wait_timeout来设置。在InnoDB中，默认值是50s。</li><li>另一种策略是，发起死锁检测，发现死锁后，主动回滚死锁链条中的某一个事务，让其他事务得以继续执行。将参数innodb_deadlock_detect设置为on，表示开启这个逻辑。默认值本身就是on。</li><li>正常情况下选择第二种策略，但是它也是有额外负担的，如果瞬间有大量线程请求会消耗消耗大量的CPU资源，但是每秒却执行不了几个事务，因为每次都要检测。</li></ul><p><strong>怎么解决由这种热点行更新导致的性能问题?</strong></p><ul><li>问题的症结在于，死锁检测要耗费大量的CPU资源</li><li>如果你能确保这个业务一定不会出现死锁，可以临时把死锁检测关掉。 一般不建议采用</li><li>控制并发度，对应相同行的更新，在进入引擎之前排队。这样在InnoDB内部就不会有大量的死锁检测工作了。</li><li>将热更新的行数据拆分成逻辑上的多行来减少锁冲突，但是业务复杂度可能会大大提高。</li><li>innodb行级锁是通过锁索引记录实现的，如果更新的列没建索引是会锁住整个表的。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>一条SQL更新语句是如何执行的</title>
+      <link href="2021/03/01/yi-tiao-sql-geng-xin-yu-ju-shi-ru-he-zhi-xing-de/"/>
+      <url>2021/03/01/yi-tiao-sql-geng-xin-yu-ju-shi-ru-he-zhi-xing-de/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一条SQL更新语句是如何执行的"><a href="#一条SQL更新语句是如何执行的" class="headerlink" title="一条SQL更新语句是如何执行的"></a>一条SQL更新语句是如何执行的</h1><pre class="line-numbers language-none"><code class="language-none">update T set c&#x3D;c+1 where ID&#x3D;2;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>更新流程还涉及两个重要的日志模块 redo log（重做日志）和 binlog（归档日志。</li><li>WAL的全称是Write-Ahead Logging，先写日志，再写磁盘。</li><li>当有一条记录需要更新的时候，InnoDB引擎就会先把记录写到redo log里面，并更新内存，这个时候更新就算完成了。</li><li>InnoDB引擎会在适当的时候，将这个操作记录更新到磁盘里面，比如系统空闲的时间。</li><li>InnoDB的redo log是固定大小的，从头开始写，写到末尾就又回到开头循环写。<br><img src="%5Cimages%5Cmysql_02.png" alt="redo log写入"></li><li>在进行redo log写入时，有两个重要参数的write pos(当前记录的位置),check point是当前要擦除的位置。如果write pos追上check point，表示redo log满了，这时候不能再执行新的更新，得停下来先擦掉一些记录，把check point推进一下。</li><li>有了redo log，InnoDB就可以保证即使数据库发生异常重启，之前提交的记录都不会丢失，这个能力称为crash-safe(崩溃安全）</li></ul><blockquote><p>redo log是InnoDB引擎特有的；binlog是MySQL的Server层实现的，所有引擎都可以使用。 redo log是物理日志，记录的是“在某个数据页上做了什么修改”；binlog是逻辑日志，记录的是这个语句的原始逻辑，比如“给ID=2这一行的c字段加1 ”。 redo log是循环写的，空间固定会用完；binlog是可以追加写入的。“追加写”是指binlog文件写到一定大小后会切换到下一个，并不会覆盖以前的日志。</p></blockquote><h4 id="执行器和InnoDB引擎在执行这个简单的update语句时的内部流程"><a href="#执行器和InnoDB引擎在执行这个简单的update语句时的内部流程" class="headerlink" title="执行器和InnoDB引擎在执行这个简单的update语句时的内部流程:"></a>执行器和InnoDB引擎在执行这个简单的update语句时的内部流程:</h4><p><img src="%5Cimages%5Cmysql_03.png" alt="更新过程"></p><blockquote><ul><li>执行器先找引擎取ID=2这一行。ID是主键，引擎直接用树搜索找到这一行。如果ID=2这一行所在的数据页本来就在内存中，就直接返回给执行器；否则，需要先从磁盘读入内存，然后再返回。</li><li>执行器拿到引擎给的行数据，把这个值加上1，比如原来是N，现在就是N+1，得到新的一行数据，再调用引擎接口写入这行新数据。</li><li>引擎将这行新数据更新到内存中，同时将这个更新操作记录到redo log里面，此时redo log处于prepare状态。然后告知执行器执行完成了，随时可以提交事务。</li><li>执行器生成这个操作的binlog，并把binlog写入磁盘。</li><li>执行器调用引擎的提交事务接口，引擎把刚刚写入的redo log改成提交（commit）状态，更新完成。</li><li>redo log的写入拆成了两个步骤：prepare和commit，这就是”两阶段提交”。</li></ul></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据隔离和事务-MVCC</title>
+      <link href="2021/03/01/shu-ju-ge-chi-he-shi-wu/"/>
+      <url>2021/03/01/shu-ju-ge-chi-he-shi-wu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="事务隔离"><a href="#事务隔离" class="headerlink" title="事务隔离"></a>事务隔离</h1><ul><li><p>事务就是要保证一组数据库操作，要么全部成功，要么全部失败。在MySQL中，事务支持是在引擎层实现的。</p></li><li><p>MyISAM引擎就不支持事务，这也是MyISAM被InnoDB取代的重要原因之一。</p></li><li><p>事务的特性：即原子性、一致性、隔离性、持久性。</p></li><li><p>多个事务同时执行的时候，就可能出现，不可重复读，幻读。</p></li><li><p>危机解决这些问题，出现了‘隔离级别‘，隔离越严，效率越低。</p></li><li><p>QL标准的事务隔离级别包括：读未提交（read uncommitted）、读提交（read committed）、可重复读（repeatable read）和串行化（serializable ）</p><ul><li>读未提交是指，一个事务还没提交时，它做的变更就能被别的事务看到。</li><li>读提交是指，一个事务提交之后，它做的变更才会被其他事务看到。</li><li>可重复读是指，一个事务执行过程中看到的数据，总是跟这个事务在启动时看到的数据是一致的。未提交的更改对其他事务是不可见的。</li><li>串行化:对应一个记录会加读写锁，出现冲突的时候，后访问的事务必须等前一个事务执行完成才能继续执行</li></ul></li><li><p>在实现上，数据库里面会创建一个视图，访问的时候以视图的逻辑结果为准</p><ul><li>可重复读：这个视图是在事务启动时创建的，整个事务存在期间都用这个视图。</li><li>读提交：这个视图是在每个SQL语句开始执行的时候创建的。</li><li>读未提交：直接返回记录上的最新值，没有视图概念。</li><li>串行化：用加锁的方式来避免并行访问</li></ul></li><li><p>查看数据库的实物隔离级别：show variables like ‘%isolation%’;</p><h2 id="事务隔离的实现"><a href="#事务隔离的实现" class="headerlink" title="事务隔离的实现"></a>事务隔离的实现</h2></li><li><p>在MySQL中，实际上每条记录在更新的时候都会同时记录一条回滚操作。记录上的最新值，通过回滚操作，都可以得到前一个状态的值。</p><blockquote><p>-假设一个值从1被按顺序改成了2、3、4，在回滚日志里面就会有<br>类似下面的记录。不同时刻启动的事务会有不同的read-view，同一条记录在系统中可以存在多个版本，就是数据库的多版本并发控制（MVCC）<br><img src="%5Cimages%5Cmysql_04.png" alt="MVCC"></p></blockquote></li><li><p>当没有比回滚日志更早的resd-view的时候，回滚日志会被删除。</p></li><li><p>尽量不要使用长事务。长事务意味着系统里面会存在很老的事务视图，在这个事务提交之前，回滚记录都要保留，这会导致大量占用存储空间。除此之外，长事务还占用锁资源。</p></li><li><p>事务启动方式：一、显式启动事务语句，begin或者start transaction,提交commit，回滚rollback；二、set autocommit=0，该命令会把这个线程的自动提交关掉。这样只要执行一个select语句，事务就启动，并不会自动提交，直到主动执行commit或rollback或断开连接。</p></li><li><p>建议使用方法一，如果考虑多一次交互问题，可以使用commit work and chain语法。在autocommit=1的情况下用begin显式启动事务，如果执行commit则提交事务。如果执行commit work and chain则提交事务并自动启动下一个事务</p></li><li><p><strong>MVCC实现</strong></p></li><li><p><a href="https://www.jianshu.com/p/f692d4f8a53e">https://www.jianshu.com/p/f692d4f8a53e</a></p></li><li><p><strong>锁 与mvcc</strong></p></li><li><p><a href="https://draveness.me/database-concurrency-control/">https://draveness.me/database-concurrency-control/</a></p></li><li></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>索引</title>
+      <link href="2021/03/01/suo-yin/"/>
+      <url>2021/03/01/suo-yin/</url>
+      
+        <content type="html"><![CDATA[<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><ul><li>索引的出现是为了提高查询效率，常见的三种索引模型分别是哈希表、有序数组和搜索树。</li><li>哈希表：一种以key-value 存储数据的结构，哈希的思路是把值放在数组里，用一个哈希函数把key换算成一个确定的位置，然后把value放在数组的这个位置。哈希冲突的处理办法是使用链表。哈希表适用只有等值查询的场景。</li><li>有序数组：按顺序存储。查询用二分法就可以快速查询，时间复杂度是：O(log(N))。查询效率高，更新效率低（涉及到移位）。在等值查询和范围查询场景中的性能就都非常优秀。有序数组索引只适用于静态存储引擎。</li><li>二叉搜索树：每个节点的左儿子小于父节点，右儿子大于父节点。查询时间复杂度O(log(N))，更新时间复杂度O(log(N))。数据库存储大多不适用二叉树，因为树高过高，会适用N叉树。</li></ul><h2 id="InnoDB-的索引模型"><a href="#InnoDB-的索引模型" class="headerlink" title="InnoDB 的索引模型"></a>InnoDB 的索引模型</h2><ul><li>InnoDB使用了B+树索引模型，所以数据都是存储在B+树中的。每一个索引在InnoDB里面对应一棵B+树。</li><li>索引类型分为主键索引和非主键索引。<ul><li>主键索引的叶子节点存的是整行数据。主键索引也被称为聚簇索引。</li><li>非主键索引的叶子节点内容是主键的值。非主键索引也被称为二级索引。</li></ul></li></ul><h2 id="主键索引和普通索引的查询有什么区别？"><a href="#主键索引和普通索引的查询有什么区别？" class="headerlink" title="主键索引和普通索引的查询有什么区别？"></a>主键索引和普通索引的查询有什么区别？</h2><ul><li>如果语句是select * from T where ID=500，即主键查询方式，则只需要搜索ID这棵B+树；</li><li>如果语句是select * from T where k=5，即普通索引查询方式，则需要先搜索k索引树，得到ID的值为500，再到ID索引树搜索一次。这个过程称为回表。</li><li>基于非主键索引的查询需要多扫描一棵索引树。因此，我们在应用中应该尽量使用主键查询</li></ul><h2 id="索引维护"><a href="#索引维护" class="headerlink" title="索引维护"></a>索引维护</h2><ul><li>B+树为了维护索引有序性，在插入新值的时候需要做必要的维护。涉及到数据的移动和数据页的增加和删减。</li><li>一个数据页满了，按照B+Tree算法，新增加一个数据页，叫做页分裂，会导致性能下降。空间利用率降低大概50%。当相邻的两个数据页利用率很低的时候会做数据页合并，合并的过程是分裂过程的逆过程。</li><li>索引可能因为删除，或者页分裂等原因，导致数据页有空洞，重建索引的过程会创建一个新的索引，把数据按顺序插入，这样页面的利用率最高，也就是索引更紧凑、更省空间。</li></ul><h2 id="覆盖索引"><a href="#覆盖索引" class="headerlink" title="覆盖索引"></a>覆盖索引</h2><pre class="line-numbers language-none"><code class="language-none">mysql&gt; create table T (ID int primary key,k int NOT NULL DEFAULT 0, s varchar(16) NOT NULL DEFAULT &#39;&#39;,index k(k))engine&#x3D;InnoDB;insert into T values(100,1, &#39;aa&#39;),(200,2,&#39;bb&#39;),(300,3,&#39;cc&#39;),(500,5,&#39;ee&#39;),(600,6,&#39;ff&#39;),(700,7,&#39;gg&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3 id="如果我执行-select-from-T-where-k-between-3-and-5，需要执行几次树的搜索操作，会扫描多少行？"><a href="#如果我执行-select-from-T-where-k-between-3-and-5，需要执行几次树的搜索操作，会扫描多少行？" class="headerlink" title="如果我执行 select * from T where k between 3 and 5，需要执行几次树的搜索操作，会扫描多少行？"></a>如果我执行 select * from T where k between 3 and 5，需要执行几次树的搜索操作，会扫描多少行？</h3><h3 id="SQL查询语句的执行流程"><a href="#SQL查询语句的执行流程" class="headerlink" title="SQL查询语句的执行流程:"></a>SQL查询语句的执行流程:</h3><ul><li>在k索引树上找到k=3的记录，取得 ID = 300；</li><li>再到ID索引树查到ID=300对应的R3；</li><li>在k索引树取下一个值k=5，取得ID=500；</li><li>再回到ID索引树查到ID=500对应的R4；</li><li>在k索引树取下一个值k=6，不满足条件，循环结束。</li><li>在这个过程中，回到主键索引树搜索的过程，我们称为回表。可以看到，这个查询过程读了k索引树的3条记录，回表了两次。在这个例子中，由于查询结果所需要的数据只在主键索引上有，所以不得不回表。<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3></li><li>sql语句修改为select ID from T where k between 3 and 5，这时只需要查ID的值，而ID的值已经在k索引树上了，因此可以直接提供查询结果，不需要回表。也就是说，在这个查询里面，索引k已经“覆盖了”我们的查询需求，我们称为覆盖索引。</li><li>由于覆盖索引可以减少树的搜索次数，显著提升查询性能，所以使用覆盖索引是一个常用的性能优化手段。<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2></li><li>覆盖索引：如果查询条件使用的是普通索引（或是联合索引的最左原则字段），查询结果是联合索引的字段或是主键，不用回表操作，直接返回结果，减少IO磁盘读写读取正行数据</li><li>最左前缀：联合索引的最左 N 个字段，也可以是字符串索引的最左 M 个字符</li><li>联合索引：根据创建联合索引的顺序，以最左原则进行where检索，比如（age，name）以age=1 或 age= 1 and name=‘张三’可以使用索引，单以name=‘张三’ 不会使用索引，考虑到存储空间的问题，还请根据业务需求，将查找频繁的数据进行靠左创建索引。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> MySQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MySQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>基础shell命令</title>
+      <link href="2021/03/01/liunx-shell/"/>
+      <url>2021/03/01/liunx-shell/</url>
+      
+        <content type="html"><![CDATA[<p><strong>man命令</strong></p><ul><li><p>man命令是Linux下的帮助指令，通过man指令可以查看Linux中的指令帮助、配置文件帮助和编程帮助等信息。</p><pre class="line-numbers language-none"><code class="language-none">man(选项)(参数) 空格翻页 q推出-a：在所有的man帮助手册中搜索；-f：等价于whatis指令，显示给定关键字的简短描述信息；-P：指定内容时使用分页程序；-M：指定man手册搜索的路径。-ｋ选项，可以在手册的简短描述中搜索关键字<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p><strong>pwd</strong>显示当前目录</p></li><li><p>**.**表示当前目录</p></li><li><p>**..**当前目录父目录</p></li><li><p><strong>ls</strong></p><ul><li>-a显示隐藏目录</li><li>-F区分文件文件夹</li><li>-R递归选项列出当前目录下子目录中包含的文件</li><li>-l详细信息（ll）</li><li>-i查看ionde编号</li><li>-d只列出目录本身信息</li><li>–time=atime 显示访问时间</li><li>可以过滤输出列表,支持通配符 <code>ls -l text</code></li></ul></li><li><p><strong>touch</strong> 创建文件</p><ul><li>touch可以改变文件修改时间，不改变内容</li><li>-a 修改最后访问时间</li></ul></li><li><p><strong>cp source destination</strong> 复制文件</p><ul><li>source 与 destination 都是文件名时，cp命令将复制一个新的文件，并以 destination 命名，新文件有新的修改时间。</li><li>-i 强制shell询问是否覆盖已有文件</li><li>-R 递归复制目录中的所有文件</li><li>可以使用通配符</li></ul></li><li><p><strong>ln -s source destination</strong> 创建符号连接（软连接）</p><ul><li>它是一个独立文件，其存在并不依赖于目标文件。如果删除一个符号链接，它指向的目标文件不受影响。如果目标文件被移动、重命名或者删除，任何指向它的符号链接仍然存在，但是它们将会指向一个不复存在的文件。这种情况被有时被称为被遗弃</li></ul></li><li><p><strong>ln source destination</strong> 创建硬链接</p><ul><li>硬连接指通过索引节点来进行连接。在Linux的文件系统中，保存在磁盘分区中的文件不管是什么类型都给它分配一个编号，称为索引节点号(Inode Index)。在Linux中，多个文件名指向同一索引节点是存在的。一般这种连接就是硬连接。硬连接的作用是允许一个文件拥有多个有效路径名，这样用户就可以建立硬连接到重要文件，以防止“误删”的功能</li></ul></li><li><p><strong>mv source destination</strong> 移动 重命名</p></li><li><p><strong>rm</strong> 删除</p><ul><li>-i 询问删除</li><li>-f 强制删除</li></ul></li><li><p><strong>mkdir</strong> 创建目录</p><ul><li>-R 创建子目录</li></ul></li><li><p><strong>rmdir</strong> 删除目录</p><ul><li>默认情况只删除空目录</li></ul></li><li><p><strong>file</strong> 探测文件类型</p></li><li><p><strong>cat</strong> 查看文件内容</p><ul><li>-n 添加行号</li><li>-b 只给有文本的行添加行号</li><li>-T 使用^T替换现实的制表符</li></ul></li><li><p><strong>more</strong> 查看文件内容</p><ul><li>依次显示一个屏幕，可向下翻页</li></ul></li><li><p><strong>less</strong> more的升级版</p><ul><li>前后翻页等</li></ul></li><li><p><strong>tail</strong> <strong>head</strong></p><ul><li>显示末尾，开头10行</li><li>-n num修改行数</li></ul></li><li><p><strong>ps</strong> 显示进程</p><ul><li>-A 显示所有进程</li><li>-e 显示所有进程</li><li>-f显示完整格式输出</li><li>-l显示长列表</li></ul></li><li><p><strong>top</strong></p><ul><li>实时检测进程</li></ul></li><li><p><strong>kill PID</strong></p><ul><li>尽可能终止</li><li>必须是进程的属主或root</li><li>-s 强制终止</li></ul></li><li><p><strong>killall processName</strong></p><ul><li>用过进程名结束进程</li><li>支持通配符</li></ul></li><li><p><strong>mount</strong> 挂载设备</p></li><li><p><strong>umount</strong> 删除设备</p></li><li><p><strong>df</strong> 显示磁盘空间</p><ul><li>-h 用M代替兆字节 G代替吉字节 可读性上升</li></ul></li><li><p><strong>du</strong> </p><ul><li>显示特定目录磁盘使用情况，默认当前目录</li><li>-c显示总大小</li><li>-h 用M代替兆字节 G代替吉字节 可读性上升</li></ul></li><li><p><strong>sort</strong> 对数据进行排序 默认字典序</p><ul><li>-t 指定分区关键字</li><li>-k 指定排序位置</li><li>-n 按数字排序</li><li>-M 三字符月份排序</li><li>-o 排序结果写入文件</li><li>-r 反序排序</li></ul></li><li><p><strong>grep [options] pattern [file]</strong></p><ul><li>在指定文件里查找匹配的行</li><li>-v 反向匹配</li><li>-n 显示行号</li><li>-c 显示匹配行数</li><li>-e 指定多个匹配 <code>grep -e a -e b file</code></li></ul></li><li><p><strong>gzip</strong></p><ul><li>压缩文件 支持通配符</li></ul></li><li><p><strong>tar</strong></p><ul><li>归档</li><li><code>tar -zxvf</code> 解压</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> shell linux </tag>
             
         </tags>
       
