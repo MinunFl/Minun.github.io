@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>滴滴凉经</title>
+      <link href="2021/03/28/di-di-liang-jing/"/>
+      <url>2021/03/28/di-di-liang-jing/</url>
+      
+        <content type="html"><![CDATA[<h1 id="滴滴一面"><a href="#滴滴一面" class="headerlink" title="滴滴一面"></a>滴滴一面</h1><ul><li>说下c++的内存泄露管理</li><li>说一下常用的STL，以及优缺点</li><li>unordered_map 使用什么数据结构实现的</li><li>指针和引用的区别</li><li>传参时指针和引用如何选择</li><li>宏和内联函数的区别</li><li>c++设计模式用过什么</li><li>c++多线程</li><li>hashmap是线程安全的吗</li><li>类编程，模板编程写过吗？</li><li>说一下TCP通信三次握手 四次挥手</li><li>为什么挥手要4次</li><li>TCP拥塞控制说一下</li><li>说一下你了解的kafka</li><li>消息队列用处</li><li>phoenix和Hbase关系</li><li>Phoenix是如何加索引的</li><li>算法：<ul><li>n个就很长的数组求交集和并集</li></ul></li></ul><p>直接挂，效率很快，我很喜欢</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 春招 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 面经 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>美团凉面</title>
       <link href="2021/03/26/mei-tuan-liang-mian/"/>
       <url>2021/03/26/mei-tuan-liang-mian/</url>
       
-        <content type="html"><![CDATA[<h1 id="美团一面"><a href="#美团一面" class="headerlink" title="美团一面"></a>美团一面</h1><ul><li>自我介绍</li><li>tcp为什么是三次握手</li><li>说说你的项目</li><li>知道kafka，说一下 （一点</li><li>学过那些语言，只要用什么</li><li>java hashmap说一下 ）不懂</li><li>java python c++你觉得区别是什么，各自优缺点</li><li>为什么java可以可以移植性好</li><li>那c呢？（不知道</li><li>数据库索引是什么数据结构</li><li>为什么是b+树，和b树优势</li><li>你的项目该怎么建索引</li><li>你项目数据库是怎么存的</li><li>数据库的隔离级别，介绍一下</li><li>为什么有可重复读还要有串行化，区别</li><li>幻读是什么</li><li>最近读什么书</li><li>读书收获</li><li>c++线程加锁，mutex，源码怎么实现</li><li>一个先增后减的数组，找最大值</li><li>一个乱序数组，保证每个数都出现2次，拿走一个，求拿走的数</li><li>拿走2个，保证拿走不同的书</li><li>回问<ul><li>算法题表现如何（一般，没有想象中高效</li><li>拿两个怎么做（异或二分 不懂</li></ul></li></ul>]]></content>
+        <content type="html"><![CDATA[<h1 id="美团一面"><a href="#美团一面" class="headerlink" title="美团一面"></a>美团一面</h1><ul><li>自我介绍</li><li>tcp为什么是三次握手</li><li>说说你的项目</li><li>知道kafka，说一下 （一点</li><li>kafka不会不丢失消息</li><li>学过那些语言，只要用什么</li><li>java hashmap说一下 ）不懂</li><li>java python c++你觉得区别是什么，各自优缺点</li><li>为什么java可以可以移植性好</li><li>那c呢？（不知道</li><li>进程与线程区别</li><li>数据库索引是什么数据结构</li><li>为什么是b+树，和b树优势</li><li>你的项目该怎么建索引</li><li>你项目数据库是怎么存的</li><li>数据库的隔离级别，介绍一下</li><li>为什么有可重复读还要有串行化，区别</li><li>幻读是什么</li><li>最近读什么书</li><li>读书收获</li><li>c++线程加锁，mutex，源码怎么实现</li><li>一个先增后减的数组，找最大值</li><li>一个乱序数组，保证每个数都出现2次，拿走一个，求拿走的数</li><li>拿走2个，保证拿走不同的数</li><li>回问<ul><li>算法题表现如何（一般，没有想象中高效</li><li>拿两个怎么做（三次异或</li></ul></li></ul>]]></content>
       
       
       
