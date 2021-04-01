@@ -461,7 +461,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    106
+                    341
                 </div>
                 
 
@@ -486,7 +486,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="字节一面"><a href="#字节一面" class="headerlink" title="字节一面"></a>字节一面</h1><ul>
+                <h1 id="字节电商"><a href="#字节电商" class="headerlink" title="字节电商"></a>字节电商</h1><h2 id="字节一面"><a href="#字节一面" class="headerlink" title="字节一面"></a>字节一面</h2><ul>
 <li>算法题：在一个连续区间使得其值等于target，使得区间长度最大（一开始给的转变的其他题意，写了3个方案）</li>
 <li>介绍一下虚拟内存</li>
 <li>页面置换实现？</li>
@@ -496,7 +496,40 @@
 </ul>
 </li>
 </ul>
-
+<h2 id="字节二面"><a href="#字节二面" class="headerlink" title="字节二面"></a>字节二面</h2><ul>
+<li>innodb的底层数据结构是什么？（人傻了只会索引，不知道</li>
+<li>sql<ul>
+<li>找出连续两行以上val相同的记录，只输出id最小的</li>
+</ul>
+</li>
+<li>算法<ul>
+<li>工作时间 &gt; 8，我们认为是『忙碌的』</li>
+<li>一段时间之内，『忙碌的』天数 &gt; 『不忙碌的』天数，我们认为这一段时间内是『忙碌的』</li>
+<li>给定一个数组，求这段时间最长的忙碌的时间</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>给出一个t表，里面有2个字段，id和num<br>id是连续递增的，求出现的连续2次及以上的num和他最小的id</p>
+</blockquote>
+<p>例如：<br>id  num<br>1   1<br>2   1<br>3   1<br>4   2<br>5   1<br>6   1<br>输出<br>1  1<br>5  1</p>
+<pre class="line-numbers language-none"><code class="language-none">select 
+        minid,Num 
+from  
+    (
+        select 
+            l.id as Id,
+            Num,
+            if(@pre&#x3D;Num,@count :&#x3D; @count+1,@count :&#x3D; 1) as nums,
+            if(@pre&#x3D;Num,@preid :&#x3D; @preid,@preid :&#x3D; l.id) as minid,
+            @pre:&#x3D;Num
+        from Logs as l,
+        (select @pre:&#x3D; null,@count:&#x3D;1,@preid:&#x3D;null) as pc
+    ) as n
+where 
+    nums&gt;&#x3D;2
+group by
+    minid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
